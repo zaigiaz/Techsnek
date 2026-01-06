@@ -2,15 +2,17 @@ import pygame
 
 # create basic game loop that displays grid
  
-
 # game loop:
 # init(), processinput(), update(), render(), and run()
 
 pygame.init()
-window = pygame.display.set_mode((640,480))
+window = pygame.display.set_mode((1920,1080))
+pygame.key.set_repeat(500, 30)
+font = pygame.font.Font(None, 74)
+text = font.render("Hello, Pygame!", True, (0, 255, 0))
 
-x = 120
-y = 120
+x = 200
+y = 200
 running = True
 
 while running:
@@ -20,20 +22,29 @@ while running:
             running = False
             break
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
+            if event.key == pygame.K_q:
                 running = False
                 break
             elif event.key == pygame.K_RIGHT:
-                x += 8
+                x += 50
             elif event.key == pygame.K_LEFT:
-                x -= 8
+                x -= 50
             elif event.key == pygame.K_DOWN:
-                y += 8
+                y += 50
             elif event.key == pygame.K_UP:
-                y -= 8
+                y -= 50
 
     window.fill((0,0,0))
-    pygame.draw.rect(window,(0,0,255),(x,y,400,240))
+    window.blit(text, (250, 250))
+    pygame.draw.rect(window,(0,0,255),(x,y,240,240))
     pygame.display.update()
 
 pygame.quit()
+
+
+
+
+
+
+
+
